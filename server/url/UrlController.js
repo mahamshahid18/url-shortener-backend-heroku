@@ -12,7 +12,7 @@ let checkUrlExists = (req, res, next) => {
     )
     .then((data) => {
         if (data) {
-            req.resolvedUrl = data.short_url;
+            req.resolvedUrl = `${data.short_url},${data.short_id}`;
             req.expired = checkLinkExpired(data.expiry, data.created_at);
         }
         next();
@@ -65,7 +65,7 @@ router.route('/')
             });
             urlRecord.save()
             .then((data) => {
-                res.status(200).send(data.short_url);
+                res.status(200).send(`${data.short_url},${data.short_id}`);
                 console.log('Sending new shortened url: %s', data.short_url);
             })
             .catch(err => next(err));
