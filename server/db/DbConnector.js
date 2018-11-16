@@ -14,7 +14,7 @@ class DbConnector {
     connect() {
         const dbUri = `${this.dbBaseUrl}:${this.dbPort}`;
 
-        return mongoose.connect(`mongodb://${this.dbUser}:${this.dbPwd}@ds039231.${dbUri}/${this.dbName}`,
+        return mongoose.connect(`mongodb://${this.dbUser}:${this.dbPwd}@ds151544.${dbUri}/${this.dbName}`,
             { useNewUrlParser: true }
         );
     }
